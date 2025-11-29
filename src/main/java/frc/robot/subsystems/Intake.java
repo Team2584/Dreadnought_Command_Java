@@ -59,6 +59,11 @@ public class Intake extends SubsystemBase {
           m_Intake2.set(VictorSPXControlMode.PercentOutput, 0);
         });
   }
+/*
+  public void runIntake(double vel){
+    m
+  }
+  */
 
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).

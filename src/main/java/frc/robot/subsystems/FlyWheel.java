@@ -70,6 +70,18 @@ public class FlyWheel extends SubsystemBase {
         });
   }
 
+  public void setFly(double vel){
+    m_fly1.set(vel);
+    m_fly2.set(vel);
+  }
+
+  public void runIndexer(){
+    m_upperIndex.set(VictorSPXControlMode.PercentOutput,0.35);
+  }
+
+  public void stopIndexer(){
+    m_upperIndex.set(VictorSPXControlMode.PercentOutput, 0);
+  }
 
   public Command StopFly(){
     return runOnce(()-> {m_fly1.set(0); m_fly2.set(0); m_upperIndex.set(VictorSPXControlMode.PercentOutput, 0.0);} );
