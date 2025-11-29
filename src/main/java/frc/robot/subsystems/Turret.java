@@ -10,10 +10,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Turret extends SubsystemBase {
-    private final TalonSRX m_Turret = new TalonSRX(TurretConstants.kTurretPort);
+    private final TalonSRX m_Turret;
 
     public Turret() {
+      m_Turret = new TalonSRX(TurretConstants.kTurretPort);
+    }
 
+    public void setTurretRotation(double rotVel){
+      m_Turret.set(TalonSRXControlMode.PercentOutput, rotVel);
     }
 
     public Command stopRotation() {

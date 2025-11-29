@@ -10,9 +10,11 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveArcade;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TurretRotation;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -29,6 +31,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final FlyWheel m_flywheel = new FlyWheel();
   private final Intake m_intake = new Intake();
+  private final Turret m_turret = new Turret();
   
   public static final Drivetrain m_drivetrain = new Drivetrain();
 
@@ -74,6 +77,9 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(m_intake.Outtake());
     m_driverController.rightTrigger().whileFalse(m_intake.StopIntake());
     m_driverController.leftTrigger().whileFalse(m_intake.StopIntake());
+
+    m_driverController.rightBumper().whileTrue(new TurretRotation(m_turret, 0.2));
+    m_driverController.rightBumper().whileTrue(new TurretRotation(m_turret, -0.2));
   }
 
   /**
