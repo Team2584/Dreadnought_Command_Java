@@ -59,11 +59,17 @@ public class Intake extends SubsystemBase {
           m_Intake2.set(VictorSPXControlMode.PercentOutput, 0);
         });
   }
-/*
-  public void runIntake(double vel){
-    m
+
+  public void runIntake(double dir){
+    m_Intake1.set(VictorSPXControlMode.PercentOutput, 0.80*dir);
+    m_Intake2.set(VictorSPXControlMode.PercentOutput, 0.60*dir);
   }
-  */
+
+  public void stop(){
+    m_Intake1.set(VictorSPXControlMode.PercentOutput, 0);
+    m_Intake2.set(VictorSPXControlMode.PercentOutput, 0);
+  }
+  
 
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).

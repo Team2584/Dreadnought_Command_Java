@@ -14,6 +14,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.TurretRotation;
 import frc.robot.commands.FlyWheelSpin;
 import frc.robot.commands.Fire;
+import frc.robot.commands.RunIntake;
 // Improt Subsystems
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.FlyWheel;
@@ -94,19 +95,17 @@ public class RobotContainer {
     m_driverController.a().whileTrue(m_flywheel.StopFly());
 
     // Intake
-    m_driverController.leftTrigger().whileTrue(m_intake.Intake());
-    m_driverController.leftTrigger().whileFalse(m_intake.StopIntake());
+    m_driverController.leftTrigger().whileTrue(new RunIntake(m_intake, 1));
 
     // Outtake
-    m_driverController.leftTrigger().and(m_driverController.leftBumper()).whileTrue(m_intake.Outtake());
-    m_driverController.leftTrigger().and(m_driverController.leftBumper()).whileFalse(m_intake.StopIntake());
+    m_driverController.povDown().whileTrue(new RunIntake(m_intake, -1));
 
     // Fire
     m_driverController.rightTrigger().whileTrue(new Fire(m_intake, m_flywheel, 0.35));
 
     // Turret rotation
-    m_driverController.rightBumper().whileTrue(new TurretRotation(m_turret, 0.2));
-    m_driverController.leftBumper().whileTrue(new TurretRotation(m_turret, -0.2));
+    m_driverController.rightBumper().whileTrue(new TurretRotation(m_turret, -0.35));
+    m_driverController.leftBumper().whileTrue(new TurretRotation(m_turret, 0.35));
   }
 
   /**

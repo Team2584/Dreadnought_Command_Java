@@ -36,7 +36,7 @@ public final class Constants {
   }
 
   public static final class TurretConstants {
-    public static final int kTurretPort = 11;
+    public static final int kTurretPort = 6;
   }
 
   public static final class FlyConstants {
