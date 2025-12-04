@@ -76,7 +76,7 @@ public class FlyWheel extends SubsystemBase {
   }
 
   public void runIndexer(){
-    m_upperIndex.set(VictorSPXControlMode.PercentOutput,0.35);
+    m_upperIndex.set(VictorSPXControlMode.PercentOutput,0.50);
   }
 
   public void stopIndexer(){

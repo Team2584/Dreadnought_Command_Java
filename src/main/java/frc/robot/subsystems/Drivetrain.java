@@ -47,6 +47,8 @@ public class Drivetrain extends SubsystemBase {
         m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
         m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
         */
+
+        m_diffDrive.setMaxOutput(0.2);
     }
 
     /**
@@ -69,7 +71,7 @@ public class Drivetrain extends SubsystemBase {
     public Command arcadeDriveCommand(DoubleSupplier fwd, DoubleSupplier rot) {
         // A split-stick arcade command, with forward/backward controlled by the left
         // hand, and turning controlled by the right.
-        return run(() ->  m_diffDrive.arcadeDrive(-fwd.getAsDouble() * 0.2, -rot.getAsDouble() * 0.2))
+        return run(() ->  m_diffDrive.arcadeDrive(-fwd.getAsDouble(), -rot.getAsDouble()))
             .withName("arcadeDriveCommand");
            //m_leftLeader.set(fwd.getAsDouble()));//m_lowerIndex.set(VictorSPXControlMode.PercentOutput, fwd.getAsDouble()));
     }
